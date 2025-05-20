@@ -5,7 +5,7 @@ authors = ["Siddhartha <siddpal04@gmail.com>"]
 license = "MIT OR Apache-2.0"
 description = "A small implementation of the KZG polynomial commitment scheme over the arkworks ecosystem."
 repository = "https://github.com/sidx04/kzg-mini"
-keywords = ["kzg", "commitment", "crypto", "polynomial", "ethereum", "zk"]
+keywords = ["kzg", "commitment", "crypto", "ethereum", "zk"]
 categories = ["cryptography", "api"]
 edition = "2024"
 

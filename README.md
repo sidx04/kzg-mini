@@ -1,6 +1,6 @@
 # kzg-mini
 
-A minimal, no-std compatible KZG polynomial commitment library for zk-SNARKs and cryptographic applications. Built on top of the `arkworks` ecosystem.
+A minimal implementation of the KZG commitment scheme. Built on top of the `arkworks` ecosystem.
 
 ## 🧩 Features
 

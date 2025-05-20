@@ -20,5 +20,8 @@ fn main() {
     let proof = setup.open(&poly, point);
 
     let ok = setup.verify(commitment, &proof);
+    println!("Reference Polynomial: {:#?}", poly);
+    println!("Commitment: {}", commitment);
+    println!("Proof: {:#?}", proof);
     println!("KZG proof verified: {}", ok);
 }

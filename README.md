@@ -94,10 +94,6 @@ fn main() {
 - `KZGCeremony<E>`: Holds the trusted setup parameters for a KZG commitment over a pairing engine `E`.
 - `KZGCommitment`, `KZGProof`: Types representing the output of commitment and opening.
 
-## 🔐 Security
-
-> This library uses a simplified version of KZG commitments for demonstration and learning. It **does not** use secure MPC for the trusted setup, so **do not use in production** as-is.
-
 ## 📄 License
 
 MIT or Apache-2.0

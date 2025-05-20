@@ -124,7 +124,6 @@ where
     /// let commitment = ceremony.commit(&poly);
     /// println!("Commitment to {:?} is the point on the curve {:?}", poly, commitment);
     /// ```
-
     pub fn commit(&self, poly: &Polynomial<E::ScalarField>) -> E::G1 {
         assert!(
             poly.coeffs.len() <= self.powers_of_g.len(),

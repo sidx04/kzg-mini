@@ -1,13 +1,15 @@
+use anyhow::Error;
 use ark_bls12_381::{Bls12_381, Fr, G1Projective, G2Projective};
 use ark_ec::PrimeGroup;
 use ark_std::{UniformRand, test_rng};
 use kzg_mini::{KZGCeremony, Polynomial};
+use std::str::FromStr;
 
-fn main() {
+fn main() -> anyhow::Result<(), Error> {
     let mut rng = test_rng();
 
     // construct a polynomial from the given string
-    let poly = Polynomial::from_str("hell0, world!");
+    let poly = Polynomial::from_str("hell0, world!")?;
 
     let tau = Fr::rand(&mut rng);
     let g1 = G1Projective::generator();
@@ -24,4 +26,6 @@ fn main() {
     println!("Commitment: {}", commitment);
     println!("Proof: {:#?}", proof);
     println!("KZG proof verified: {}", ok);
+
+    Ok(())
 }

@@ -1,5 +1,6 @@
 use ark_ff::Field;
 use ark_std::vec::Vec;
+use std::string::ParseError;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Polynomial<F>
@@ -16,7 +17,7 @@ where
 {
     /// Return a new polynomial from an array of `coeffs`.
     pub fn new(mut coeffs: Vec<F>) -> Self {
-        while coeffs.last().map_or(false, |c| c.is_zero()) {
+        while coeffs.last().is_some_and(|c| c.is_zero()) {
             coeffs.pop();
         }
         Polynomial {
@@ -49,6 +50,7 @@ where
     }
 
     /// Add two polynomials
+    #[allow(clippy::needless_range_loop)]
     pub fn add(&self, other: &Self) -> Self {
         let max_len = self.coeffs.len().max(other.coeffs.len());
         let mut coeffs = vec![F::zero(); max_len];
@@ -86,6 +88,7 @@ where
     }
 
     /// Subtract another polynomial
+    #[allow(clippy::needless_range_loop)]
     pub fn sub(&self, other: &Self) -> Self {
         let max_len = self.coeffs.len().max(other.coeffs.len());
         let mut coeffs = vec![F::zero(); max_len];
@@ -117,11 +120,14 @@ where
 
         (Polynomial::new(quotient), remainder)
     }
+}
 
-    pub fn from_str(input: &str) -> Self {
-        let coeffs: Vec<F> = input.bytes().map(|b| F::from(b as u64)).collect();
+impl<F: Field> std::str::FromStr for Polynomial<F> {
+    type Err = ParseError;
 
-        Self::new(coeffs)
+    fn from_str(s: &str) -> ark_std::result::Result<Self, ParseError> {
+        let coeffs: Vec<F> = s.bytes().map(|b| F::from(b as u64)).collect();
+        Ok(Self::new(coeffs))
     }
 }
 

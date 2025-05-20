@@ -1,6 +1,11 @@
 [package]
 name = "kzg-mini"
-version = "0.1.0"
+version = "0.1.1"
+authors = ["Siddhartha <siddpal04@gmail.com>"]
+license = "MIT OR Apache-2.0"
+repository = " https://github.com/sidx04/kzg-mini"
+keywords = ["kzg", "commitment", "crypto", "polynomial", "ethereum", "zk"]
+categories = ["cryptography", "api"]
 edition = "2024"
 
 [dependencies]
@@ -8,4 +13,8 @@ ark-bls12-381 = "0.5.0"
 ark-ec = "0.5.0"
 ark-ff = "0.5.0"
 ark-std = "0.5.0"
-clap = { version = "4.5.38", features = ["derive"] }
+
+
+[lib]
+name = "kzg_mini"
+path = "src/lib.rs"
